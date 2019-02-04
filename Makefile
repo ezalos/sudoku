@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 07:45:21 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/04 07:47:19 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ ERROR_STRING = [ERROR]
 WARN_STRING  = [WARNING]
 COM_STRING   = Compiling
 
-MSG ?= Makefile automated push
+MSG ?= "Makefile automated push"
 
 define run_and_test
 printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
@@ -159,10 +159,9 @@ re :	fclean all
 are :	afclean all
 
 git :
-		@echo $(MSG)
 		@git add -A
 		@git status
-		@git commit -am "$(MSG)"
+		git commit -am "$(MSG)"
 		@git push
 
 t0 :	all
