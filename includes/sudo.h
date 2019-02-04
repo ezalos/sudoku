@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 07:55:16 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 08:41:14 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,25 @@ typedef struct			s_sudo
 
 
 //SETUP
-t_sudo		*read_sudo(char *av);
-int			write_ghosts(t_sudo *s);
-int			write_ghost(t_sudo *s, int grd);
+t_sudo	*read_sudo(char *av);
+int		write_ghosts(t_sudo *s);
+int		write_ghost(t_sudo *s, int grd);
 
 //SOLVE
-void	brain(t_sudo *sudo);
+int		brain(t_sudo *sudo);
+int		add_star(t_sudo *sudo);
+int		add_star_grid(t_sudo *sudo, int grid);
 
 //PRINT
 void	ft_putchar_color(char c);
 void 	print_grid(t_sudo *sudo, int grid);
 void 	print_grids(t_sudo *sudo);
 
-
-
+//LOGIC
+int 	check_n_line(t_sudo *sudo, int nb, int grid,  int lin);
+int 	check_n_column(t_sudo *sudo, int nb, int grid, int col);
+int		check_n_square(t_sudo *sudo, int nb, int grid, int lin, int col);
+int		check_n(t_sudo *sudo, int nb, int grid, int lin, int col);
 
 
 //SHIT
