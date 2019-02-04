@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 05:27:30 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/04 07:30:31 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 ##############################################################################
 ##############################################################################
 
-SRCS		= main ghost print setup solve read
+SRCS		= main print setup logic_tools #solve shit ghost 
 
 SRC_PATH	= ./srcs
 
@@ -56,7 +56,7 @@ A_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS))
 
 OBJ 		= $(patsubst %,%.o,$(SRCS))
 
-LIB_DIR	= ./../libft
+LIB_DIR		= ./../libft
 HEAD		= sudo.h
 HEAD_DIR	= ./includes
 HEAD_PATH	= $(HEAD_DIR)/$(HEAD)
@@ -132,23 +132,29 @@ endef
 all :	$(NAME)
 
 $(NAME): $(A_OBJ) $(HEAD_PATH)
-		#@$(MAKE) -- C $(LIB_PATH)
+		@$(MAKE) -C $(LIB_DIR)
 		@$(call run_and_test, $(CC) $(CFLAGS) -I./$(HEAD_DIR) $(A_OBJ) $(LIB) -o $(NAME))
 
 $(DIR_OBJ)%.o:$(SRC_PATH)/%.c
 		@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $<)
 
 clean :
-		#@$(MAKE) clean -- C $(LIB_PATH)
 		@echo "\$(YELLOW)fill_objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 		@rm -f $(A_OBJ)
 
 fclean : clean
-		#@$(MAKE) fclean -- C $(LIB_PATH)
 		@echo "\$(YELLOW)$(NAME) \$(END)\\t\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 		@rm -rf $(NAME)
 
+aclean : clean
+		@$(MAKE) clean -C $(LIB_DIR)
+
+afclean : aclean fclean
+		@$(MAKE) fclean -C $(LIB_DIR)
+
 re :	fclean all
+
+are :	afclean all
 
 git :
 		@git add -A
@@ -157,11 +163,11 @@ git :
 		@git push
 
 t0 :	all
-		./$(NAME) "9...7...." "2...9..53" ".6..124.." "84...1.9." "5.....8.." ".31..4..." "..37..68." ".9..5.741" "47......."
+		./$(NAME) ./tests/t0
 t1 : 	all
-		./$(NAME) 1....7.9. .3..2...8 ..96..5.. ..53..9.. .1..8...2 6....4... 3......1. .4......7 ..7...3..
+		./$(NAME) ./tests/t1
 t2 :	all
-		./$(NAME) ......... .....3.85 ..1.2.... ...5.7... ..4...1.. .9....... 5......73 ..2.1.... ....4...9
+		./$(NAME) ./tests/t2
 
 ##########################
 ##						##
