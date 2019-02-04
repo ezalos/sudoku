@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 07:25:41 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 14:33:40 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ t_sudo		*read_sudo(char *av)
 			return (NULL);
 		sudo->col = -1;
 		while (++sudo->col < 9)
-			if (sudo->sol[0][sudo->lin][sudo->col] < '0'
+			if (sudo->sol[0][sudo->lin][sudo->col] <= '0'
 			|| sudo->sol[0][sudo->lin][sudo->col] > '9')
 				sudo->sol[0][sudo->lin][sudo->col] = ' ';
+		//printf("%s\n", sudo->sol[0][sudo->lin]);
 		free(line);
 	}
 	close(fd);

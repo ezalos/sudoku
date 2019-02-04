@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 07:29:15 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 09:03:14 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 12:08:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int 	check_n_square(t_sudo *sudo, int nb, int grid, int lin, int col)
 {
 	int		l;
 	int		c;
+	int		qt;
 
+	qt = 0;
 	if (nb < 10)
 		nb = nb + '0';
 	lin = ((lin / 3) * 3);
@@ -57,16 +59,42 @@ int 	check_n_square(t_sudo *sudo, int nb, int grid, int lin, int col)
 		c = -1;
 		while (++c < 3)
 			if (sudo->sol[grid][lin + l][col + c] == nb)
-				return (0);
+				qt++;
 	}
-	return (1);
+	return (qt);
 }
 
 int 	check_n(t_sudo *sudo, int nb, int grid, int lin, int col)
 {
 	if (check_n_column(sudo, nb, grid, col)
 		&& check_n_line(sudo, nb, grid, lin)
-		&& check_n_square(sudo, nb, grid, lin, col))
+		&& !check_n_square(sudo, nb, grid, lin, col))
 		return (1);
 	return (0);
+}
+
+int		find_n_in_sqr(t_sudo *sudo, int nb, int grid, int lin, int col)
+{
+	int		l;
+	int		c;
+
+	if (nb < 10)
+		nb = nb + '0';
+	lin = ((lin / 3) * 3);
+	col = ((col / 3) * 3);
+	l = -1;
+	while (++l < 3)
+	{
+		c = -1;
+		while (++c < 3)
+			//printf("%c\n", );
+			if (sudo->sol[grid][lin + l][col + c] == nb)
+			{
+				//if (grid == 4 && lin == 3 && col == 6)
+					//printf("-->grid %d | lin = %d | col = %d | c = %c\n", grid, lin + l, col + c, sudo->sol[grid][lin + l][col + c]);
+				return (((lin + l) * 10) + col + c);
+			}
+	}
+	//printf("pbm?\n");
+	return (-1);
 }

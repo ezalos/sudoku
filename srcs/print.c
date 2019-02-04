@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 07:28:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 14:44:08 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar_color(char c)
 
 	l = (int)c % 10;
 	if (c == '*')
-		write(1, _RESET, 5);
+		write(1, _BLUE, 5);
 	else if (l == 1 || l == 6)
 		write(1, _GREEN, 5);
 	else if (l == 2 || l == 7)
@@ -36,6 +36,46 @@ void	ft_putchar_color(char c)
 	write(1, _RESET, 5);
 }
 
+void print_ghost_grid(t_sudo *sudo, int tri)
+{
+	int i;
+	int j;
+	int grid;
+
+	j = -1;
+	if (tri == 0)
+		ft_putstr("\t");
+	while (++j < 9)
+	{
+		grid = 0;
+		while (++grid < 4)
+		{
+		i = -1;
+		while (++i < 9)
+		{
+				ft_putchar_color(sudo->sol[tri + grid][j][i]);
+				if (i == 2 || i == 5)
+					ft_putstr("| ");
+		}
+			if ( grid < 3)
+			ft_putstr("  $  ");
+		}
+		ft_putstr("\n\t");
+		if (j == 2 || j == 5)
+		{
+			ft_putstr("- - -   - - -   - - -   $  - - -   - - -   - - -   $  - - -   - - -   - - - \n\t");
+		}
+	}
+	if (tri < 6)
+	{
+	ft_putstr("                        $                          $                        \n\t");
+	ft_putstr("~~~~~~~~~~~~~~~~~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~~~\n\t");
+	ft_putstr("                        $                          $                        \n\t");
+	}
+	else
+		ft_putstr("\n\n\n\t");
+}
+
 void print_grid(t_sudo *sudo, int grid)
 {
 	int i;
@@ -45,28 +85,43 @@ void print_grid(t_sudo *sudo, int grid)
 	while (++j < 9)
 	{
 		i = -1;
+		ft_putstr("                           ");
 		while (++i < 9)
 		{
 			ft_putchar_color(sudo->sol[grid][j][i]);
 			if (i == 2 || i == 5)
 				ft_putstr("| ");
 		}
-		ft_putstr("\n");
+		ft_putstr("\n\t");
 		if (j == 2 || j == 5)
-			ft_putstr("- - -   - - -   - - - \n");
+		{
+			ft_putstr("                           ");
+			ft_putstr("- - -   - - -   - - - \n\t");
+		}
 	}
+}
+void wait_pls(void)
+{
+	long long wait;
+
+	wait = 30000000;
+	while(--wait);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 void print_grids(t_sudo *sudo)
 {
 	int grid;
-	grid = 1;
+	int tri;
 
-	while (grid <= 9)
+//	wait_pls();
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t");
+	tri = 0;
+	grid = 0;
+	while (tri < 9)
 	{
-		print_grid(sudo, grid);
-		ft_putstr("\n//////////////////////\n");
-		grid++;
+		print_ghost_grid(sudo, tri);
+		tri += 3;
 	}
 	print_grid(sudo, 0);
 }

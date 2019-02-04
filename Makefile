@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 07:55:48 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/04 14:36:03 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 ##############################################################################
 ##############################################################################
 
-SRCS		= main print setup logic_tools solve # shit ghost
+SRCS		= main print setup logic_tools solve simple_star smart_tools stars_tools
 
 SRC_PATH	= ./srcs
 
@@ -170,6 +170,10 @@ t1 : 	all
 		./$(NAME) ./tests/t1
 t2 :	all
 		./$(NAME) ./tests/t2
+a1 :	all
+		./$(NAME) ./tests/tests/s01a.txt
+e1 :	all
+		./$(NAME) ./tests/tests/s06a.txt
 
 ##########################
 ##						##
