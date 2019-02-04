@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 05:16:17 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/04 05:27:30 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ A_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS))
 
 OBJ 		= $(patsubst %,%.o,$(SRCS))
 
-LIB_DIR	= ./../../42/libft
+LIB_DIR	= ./../libft
 HEAD		= sudo.h
 HEAD_DIR	= ./includes
 HEAD_PATH	= $(HEAD_DIR)/$(HEAD)
