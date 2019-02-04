@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 15:52:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 20:59:54 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 21:15:32 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		delete_stars_on_sqr(t_sudo *sudo, int grid, int lin, int col)
 		l = -1;
 		while (++l < 3)
 		{
-			if (l != lin && sudo->sol[grid][lin + l][col + c] == '*')
+			if (sudo->sol[grid][lin + l][col + c] == '*')
 				sudo->sol[grid][lin + l][col + c] = ' ';
 		}
 	}
@@ -74,6 +74,6 @@ int		delete_stars(t_sudo *sudo, int grid, int lin, int col)
 	delete_stars_on_point(sudo, lin, col);
 	delete_stars_on_lin(sudo, grid, lin, col);
 	delete_stars_on_col(sudo, grid, lin, col);
-	//delete_stars_on_sqr(sudo, grid, (lin / 3) * 3, (col / 3) * 3);
+	delete_stars_on_sqr(sudo, grid, (lin / 3) * 3, (col / 3) * 3);
 	return (0);
 }

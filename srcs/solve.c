@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 20:15:18 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 21:23:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int		brain(t_sudo *sudo)
 
 	write_ghosts(sudo);  //met les numeros dans les ghosts
 	add_stars(sudo);  // met les etoiles dansns les ghosts
+	print_grids(sudo);
 	b = -1;
-	a = 1;
+	a = 2;
 	while (a || sudo->sld > b)
 	{
 		b = sudo->sld;
@@ -45,15 +46,20 @@ int		brain(t_sudo *sudo)
 		//if (a <= 3)
 		//	add_stars(sudo);
 		if (sudo->sld > b)
-			a = 5;
+			a = 2;
 		else
 		{
 			clr_strs(sudo);
 			print_grids(sudo);
-			//printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
 			a--;
 		}
+		if (sudo->sld + sudo->bas == 81)
+		{
+			printf("VICOTRY\n");
+			return (1);
+		}
 	}
+	printf("FAILURE\n");
 	//clr_strs(sudo);
 	//print_grids(sudo);
 	return (0);

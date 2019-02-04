@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 20:14:18 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 21:20:50 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,5 @@ void print_grids(t_sudo *sudo)
 		tri += 3;
 	}
 	print_grid(sudo, 0);
-	printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
+	printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n\n\n\n\n" _RESET, sudo->sld, 81 - sudo->bas);
 }
