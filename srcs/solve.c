@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 16:04:39 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 18:03:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,40 @@
 
 int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 {
-
-	printf("grid %d | lin = %d | col = %d\n", nb, lin, col);
-	sudo->sol[0][lin][col] = nb + '0';
-	sudo->sol[nb][lin][col] = nb + '0';
-	sudo->sld++;
-	delete_stars(sudo, nb, lin, col);
+	if (check_n(sudo, nb, 0, lin, col))
+	{
+		//printf("grid %d | lin = %d | col = %d\n", nb, lin, col);
+		sudo->sol[0][lin][col] = nb + '0';
+		sudo->sol[nb][lin][col] = nb + '0';
+		sudo->sld++;
+		delete_stars(sudo, nb, lin, col);
+		print_grids(sudo);
+		printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
+	}
 	return (0);
 }
 
 int		brain(t_sudo *sudo)
 {
+	int 	a;
 	int		b;
 	int		grid;
 
 	write_ghosts(sudo);  //met les numeros dans les ghosts
 	add_stars(sudo);  // met les etoiles dansns les ghosts
 	b = -1;
-	while (sudo->sld > b)
+	a = 1;
+	while (a || sudo->sld > b)
 	{
 		b = sudo->sld;
 		grid = 0;
 		slv_sqr_strs(sudo);
 		slv_pos_strs(sudo);
-		clr_strs(sudo);
-		print_grids(sudo);
-		printf("\t\tNOMBRE DE NOMBRE TROUVES : %d\n", sudo->sld);
+		//clr_strs(sudo);
+		if (sudo->sld > b)
+			a = 1;
+		else
+			a = 0;
 	}
 	return (0);
 }

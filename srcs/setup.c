@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 15:04:19 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:47:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		*malloc_sudo(t_sudo *sudo)
 {
 	sudo->lin = -1;
 	sudo->sld = 0;
+	sudo->bas = 0;
 	if (!(sudo->sol = (char***)malloc(sizeof(char**) * 10)))
 		return (NULL);
 	if (!(sudo->sol = (char***)malloc(sizeof(char**) * 10)))
@@ -58,6 +59,8 @@ t_sudo		*read_sudo(char *av)
 			if (sudo->sol[0][sudo->lin][sudo->col] <= '0'
 			|| sudo->sol[0][sudo->lin][sudo->col] > '9')
 				sudo->sol[0][sudo->lin][sudo->col] = ' ';
+			else
+				sudo->bas++;
 		//printf("%s\n", sudo->sol[0][sudo->lin]);
 		free(line);
 	}

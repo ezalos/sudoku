@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 11:48:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 15:04:20 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:07:12 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ int		slv_pos_strs(t_sudo *sudo)
 				str = 0;
 				while (++grid < 10)
 				{
-					if (sudo->sol[grid][lin][col] >= '1' && sudo->sol[grid][lin][col] <= '9' && str)
-						return (0);
-					if (sudo->sol[grid][lin][col] >= '1' && sudo->sol[grid][lin][col] <= '9')
+					if (sudo->sol[grid][lin][col] == '*' && str)
+					{
+						grid = 10;
+						str = 0;
+					}
+					else if (sudo->sol[grid][lin][col] == '*')
 						str = grid;
 				}
 				if (str)

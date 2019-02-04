@@ -6,69 +6,67 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:23:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 16:08:53 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:57:36 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/sudo.h"
 
-int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int lin, int col)
+int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int big_lin, int big_col)
 {
-	int		l;
-	int		c;
-	int		l_s;
-	int		c_s;
+	int		sml_lin;
+	int		sml_col;
+	int		fnd_lin;
+	int		fnd_col;
 	int		hv;
-	int		qt;
 
-	l_s = -1;
-	c_s = -1;
+	fnd_lin = -1;
+	fnd_col = -1;
 	hv = -1;
-	qt = 0;
 	if (nb < 10)
 		nb = nb + '0';
-	lin = ((lin / 3) * 3);
-	col = ((col / 3) * 3);
-	l = -1;
-	while (++l < 3)
+	big_lin = ((big_lin / 3) * 3);
+	big_col = ((big_col / 3) * 3);
+	sml_lin = -1;
+	while (++sml_lin < 3)
 	{
-		c = -1;
-		while (++c < 3)
-			if (sudo->sol[grid][lin + l][col + c] == nb)
+		sml_col = -1;
+		while (++sml_col < 3)
+			if (sudo->sol[grid][big_lin + sml_lin][big_col + sml_col] == nb)
 			{
-				if (hv == -1 && (l_s >= 0 || c_s >= 0))
+				if (hv == -1 && (fnd_lin >= 0 || fnd_col >= 0))
 				{
-					if (l_s != lin + l || c_s != col + c)
+					if (fnd_lin != big_lin + sml_lin || fnd_col != big_col + sml_col)
 						return (0);//bad
 					else
 					{
-						if (l_s == lin + l)
+						if (fnd_lin == big_lin + sml_lin)
 							hv = 0;
-						else if (c_s != col + c)
+						else if (fnd_col != big_col + sml_col)
 							hv = 1;
 					}
 				}
 				if (hv == 1)
 				{
-					if (l_s != lin + l)
+					if (fnd_lin != big_lin + sml_lin)
 						return (0);
 				}
 				else if(hv == 0)
 				{
-					if (c_s != col + c)
+					if (fnd_col != big_col + sml_col)
 						return (0);
 				}
-				if (l_s == -1 || c_s == -1)
+				if (fnd_lin == -1 || fnd_col == -1)
 				{
-					l_s = lin + l;
-					c_s = col + c;
+					fnd_lin = big_lin + sml_lin;
+					fnd_col = big_col + sml_col;
 				}
 			}
 	}
 	if (hv == 0)
-		return (l_s + 1);
+		return (fnd_lin + 1);
 	else
-		return (-1 * (c_s + 1));
+		return (-1 * (fnd_col + 1));
 }
 
 int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int col)

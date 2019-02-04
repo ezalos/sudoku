@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 15:04:22 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:16:05 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void wait_pls(void)
 {
 	long long wait;
 
-	wait = 30000000;
+	wait = 100000000;
+	wait /= 5;
 	while(--wait);
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
@@ -114,7 +115,7 @@ void print_grids(t_sudo *sudo)
 	int grid;
 	int tri;
 
-//	wait_pls();
+	wait_pls();
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t");
 	tri = 0;
 	grid = 0;

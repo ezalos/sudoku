@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 16:09:24 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:45:03 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct			s_sudo
 	int					col;
 	int					grd;
 	int					sld;
+	int					bas;
 }						t_sudo;
 
 
