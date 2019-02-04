@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 01:25:07 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 05:14:33 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/sudo.h"
 
-void ft_print_grid(char array[9][9][10], int grid)
+void ft_print_grid(char ***array, int grid)
 {
 	int i;
 	int j;
@@ -37,7 +37,7 @@ void ft_print_grid(char array[9][9][10], int grid)
 	}
 }
 
-void ft_print_all_grid(char array[9][9][10], int grid)
+void ft_print_all_grid(char ***array, int grid)
 {
 
 	grid = 0;

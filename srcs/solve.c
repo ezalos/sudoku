@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 02:08:42 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 05:14:26 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/sudo.h"
 
-void ft_brain(char array[9][9][10], int grid)
+void ft_brain(char ***array, int grid)
 {
 	int b;
 	while (compteur(array) != b)

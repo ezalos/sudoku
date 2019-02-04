@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:35:59 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 01:38:59 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 05:14:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/sudo.h"
 
-void ft_write_ghost_array(char array[9][9][10])
+void ft_write_ghost_array(char ***array)
 {
 	int i;
 	int j;
@@ -42,7 +42,7 @@ void ft_write_ghost_array(char array[9][9][10])
 	}
 }
 
-void ft_remplissage_ghost(char array[9][9][10], int sqr[3][3], int y, int x, int grid)
+void ft_remplissage_ghost(char ***array, int sqr[3][3], int y, int x, int grid)
 {
 	int i;
 	int j;

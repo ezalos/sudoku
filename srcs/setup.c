@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 01:30:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 05:14:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/sudo.h"
 
-void first_writing_base(char array[9][9][10], char **argv)
+void first_writing_base(char ***array, char **argv)
 {
 	int i;
 	int j;
