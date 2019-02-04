@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 17:45:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:54:48 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,18 @@
 # endif
 
 # ifdef COLOR
-#  define _RED     "\x1b[31m"
-#  define _GREEN   "\x1b[32m"
-#  define _YELLOW  "\x1b[33m"
-#  define _BLUE    "\x1b[34m"
-#  define _MAGENTA "\x1b[35m"
-#  define _CYAN    "\x1b[36m"
-#  define _RESET   "\x1b[0m"
+#  define _RED			"\x1b[31m"
+#  define _GREEN		"\x1b[32m"
+#  define _YELLOW		"\x1b[33m"
+#  define _BLUE			"\x1b[34m"
+#  define _MAGENTA		"\x1b[35m"
+#  define _CYAN			"\x1b[36m"			//need 5 spaces
+#  define _RESET		"\x1b[0m"
+#  define _BROWN		"\x1b[38;2;238;205;163m" //need 16 spaces
+#  define _PINK			"\x1b[38;2;239;100;100m"
+#  define _PURPLE		"\x1b[38;2;101;78;163m"
+#  define _ORANGE		"\x1b[38;2;155;75;43m"
+#  define _TURQUOISE	"\x1b[38;2;68;140;121m"
 # endif
 
 typedef struct			s_sudo

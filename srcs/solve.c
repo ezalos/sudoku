@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 18:03:30 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 20:15:18 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 		sudo->sld++;
 		delete_stars(sudo, nb, lin, col);
 		print_grids(sudo);
-		printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
 	}
 	return (0);
 }
@@ -43,11 +42,19 @@ int		brain(t_sudo *sudo)
 		grid = 0;
 		slv_sqr_strs(sudo);
 		slv_pos_strs(sudo);
-		//clr_strs(sudo);
+		//if (a <= 3)
+		//	add_stars(sudo);
 		if (sudo->sld > b)
-			a = 1;
+			a = 5;
 		else
-			a = 0;
+		{
+			clr_strs(sudo);
+			print_grids(sudo);
+			//printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
+			a--;
+		}
 	}
+	//clr_strs(sudo);
+	//print_grids(sudo);
 	return (0);
 }

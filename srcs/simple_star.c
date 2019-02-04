@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:23:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 17:57:36 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 20:14:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int big_lin, int big_col)
 	int		sml_col;
 	int		fnd_lin;
 	int		fnd_col;
-	int		hv;
+	int		H_zer__V_one;
 
 	fnd_lin = -1;
 	fnd_col = -1;
-	hv = -1;
+	H_zer__V_one = -1;
 	if (nb < 10)
 		nb = nb + '0';
 	big_lin = ((big_lin / 3) * 3);
@@ -34,24 +34,26 @@ int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int big_lin, int big_col)
 		while (++sml_col < 3)
 			if (sudo->sol[grid][big_lin + sml_lin][big_col + sml_col] == nb)
 			{
-				if (hv == -1 && (fnd_lin >= 0 || fnd_col >= 0))
+				if (H_zer__V_one == -1 && (fnd_lin >= 0 || fnd_col >= 0))
 				{
-					if (fnd_lin != big_lin + sml_lin || fnd_col != big_col + sml_col)
+					if (fnd_lin != big_lin + sml_lin && fnd_col != big_col + sml_col)
 						return (0);//bad
 					else
 					{
-						if (fnd_lin == big_lin + sml_lin)
-							hv = 0;
-						else if (fnd_col != big_col + sml_col)
-							hv = 1;
+						if (fnd_lin == big_lin + sml_lin && fnd_col != big_col + sml_col)
+							H_zer__V_one = 1;
+						else if (fnd_col == big_col + sml_col && fnd_lin != big_lin + sml_lin)
+							H_zer__V_one = 0;
+						else
+							return (0);
 					}
 				}
-				if (hv == 1)
+				if (H_zer__V_one == 1)
 				{
 					if (fnd_lin != big_lin + sml_lin)
 						return (0);
 				}
-				else if(hv == 0)
+				else if(H_zer__V_one == 0)
 				{
 					if (fnd_col != big_col + sml_col)
 						return (0);
@@ -63,37 +65,53 @@ int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int big_lin, int big_col)
 				}
 			}
 	}
-	if (hv == 0)
+	//if (H_zer__V_one != -1)
+		//printf("grid %d | line = %d | col = %d | HV%d\n", grid, fnd_lin, fnd_col, H_zer__V_one);
+	if (H_zer__V_one == 1)
 		return (fnd_lin + 1);
-	else
+	else if (H_zer__V_one == 0)
 		return (-1 * (fnd_col + 1));
+	else
+		return (0);
 }
 
 int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int col)
 {
-	int		l;
-	int		l_;
-	int		c;
-	int		c_;
+	int		big_lin;
+	int		sml_lin;
+	int		big_col;
+	int		sml_col;
 
-	lin = ((lin / 3) * 3);
-	col = ((col / 3) * 3);
-	l = -1;
-	while (++l < 3)
+	//printf("grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
+	big_lin = -1;
+	while (++big_lin < 3)
 	{
-		c = -1;
-		while (++c < 3)
+		big_col = -1;
+		while (++big_col < 3)
 		{
-			if (l != lin || c != col)
+			if ((big_lin * 3 != lin && hv == 0) || (big_col * 3 != col && hv == 1))
 			{
-				l_ = -1;
-				while (++l_ < 3)
+				sml_lin = -1;
+				while (++sml_lin < 3)
 				{
-					c_ = -1;
-					while (++c_ < 3)
+					sml_col = -1;
+					while (++sml_col < 3)
 					{
-						if (sudo->sol[grid][l_ + l][c_ + c] == '*')
-							sudo->sol[grid][l_ + l][c_ + c] = ' ';
+						//printf("~~~grid %d lin %d col %d\n", grid, sml_lin + (big_lin * 3), sml_col + (big_col * 3), star, hv);
+						if (hv == 1)
+						{
+							if (sudo->sol[grid][star][sml_col + (big_col * 3)] == '*')
+							{
+								//printf("---grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
+								sudo->sol[grid][star][sml_col + (big_col * 3)] = ' ';
+							}
+						}
+						else
+							if (sudo->sol[grid][sml_lin + (big_lin * 3)][star] == '*')
+							{
+								sudo->sol[grid][sml_lin + (big_lin * 3)][star] = ' ';
+								//printf("---grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
+							}
 					}
 				}
 			}
@@ -118,10 +136,10 @@ int		clr_str(t_sudo *sudo, int grid)
 			if (star)
 			{
 				//printf("grid : %d | *** : %d | lin : %d | col : %d\n", grid, star, lin, col);
-				if (star > 0)
-					delete_aligned_stars(sudo, grid, 0, star - 1, lin, col);
+				if (star < 0)
+					delete_aligned_stars(sudo, grid, 0, (star * -1) - 1, lin * 3, col * 3);
 				else
-					delete_aligned_stars(sudo, grid, 1, (star * -1) - 1, lin, col);
+					delete_aligned_stars(sudo, grid, 1, (star) - 1, lin * 3, col * 3);
 			}
 		}
 	}
