@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 21:23:55 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 21:26:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ int		brain(t_sudo *sudo)
 		}
 		if (sudo->sld + sudo->bas == 81)
 		{
-			printf("VICOTRY\n");
+			printf(_GREEN "VICOTRY\n");
 			return (1);
 		}
 	}
-	printf("FAILURE\n");
+	printf(_RED "FAILURE\n");
 	//clr_strs(sudo);
 	//print_grids(sudo);
 	return (0);
