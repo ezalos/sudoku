@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 06:59:04 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 07:55:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,24 @@ typedef struct			s_sudo
 	int					sld;
 }						t_sudo;
 
+
+//SETUP
+t_sudo		*read_sudo(char *av);
+int			write_ghosts(t_sudo *s);
+int			write_ghost(t_sudo *s, int grd);
+
+//SOLVE
+void	brain(t_sudo *sudo);
+
+//PRINT
+void	ft_putchar_color(char c);
+void 	print_grid(t_sudo *sudo, int grid);
+void 	print_grids(t_sudo *sudo);
+
+
+
+
+
 //SHIT
 int ft_check_columns(char ***array, int i, int grid);
 int ft_check_line(char ***array, int j, int grid);
@@ -64,18 +82,5 @@ int compteur(char ***array);
 //GHOST
 void ft_write_ghost_array(char ***array);
 void ft_remplissage_ghost(char ***array, int sqr[3][3], int y, int x, int grid);
-
-//SETUP
-t_sudo		*read_sudo(char *av);
-int			write_ghosts(t_sudo *s);
-int			write_ghost(t_sudo *s, int grd);
-
-//SOLVE
-void ft_brain(char ***array, int grid);
-
-//PRINT
-void	ft_putchar_color(char c);
-void 	print_grid(t_sudo *sudo, int grid);
-void 	print_grids(t_sudo *sudo);
 
 #endif
