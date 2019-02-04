@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:23:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 14:26:51 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 16:08:53 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int lin, int col)
 	else
 		return (-1 * (c_s + 1));
 }
-int 	delete_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int col)
+
+int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int col)
 {
 	int		l;
 	int		l_;
@@ -120,9 +121,9 @@ int		clr_str(t_sudo *sudo, int grid)
 			{
 				//printf("grid : %d | *** : %d | lin : %d | col : %d\n", grid, star, lin, col);
 				if (star > 0)
-					delete_stars(sudo, grid, 0, star - 1, lin, col);
+					delete_aligned_stars(sudo, grid, 0, star - 1, lin, col);
 				else
-					delete_stars(sudo, grid, 1, (star * -1) - 1, lin, col);
+					delete_aligned_stars(sudo, grid, 1, (star * -1) - 1, lin, col);
 			}
 		}
 	}

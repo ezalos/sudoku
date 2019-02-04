@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 12:07:37 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 16:09:24 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		new_nb(t_sudo *sudo, int nb, int lin, int col);
 //STARS TOOLS
 int		add_star(t_sudo *sudo, int grid);
 int		add_stars(t_sudo *sudo);
+int		rm_star(t_sudo *sudo, int grid);
 
 //LOGIC TOOLS
 int 	check_n_line(t_sudo *sudo, int nb, int grid,  int lin);
@@ -71,12 +72,19 @@ int		find_n_in_sqr(t_sudo *sudo, int nb, int grid, int lin, int col);
 //SIMPLE STAR
 int		clr_strs(t_sudo *sudo);
 int		clr_str(t_sudo *sudo, int grid);
+int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int col);
+int 	check_n_square_hv(t_sudo *sudo, int nb, int grid, int lin, int col);
 
 //SMART TOOLS
 int		slv_sqr_str(t_sudo *sudo, int grid);
 int		slv_sqr_strs(t_sudo *sudo);
 int		slv_pos_strs(t_sudo *sudo);
 
+//DELETE
+int		delete_stars_on_point(t_sudo *sudo, int lin, int col);
+int		delete_stars_on_lin(t_sudo *sudo, int grid, int lin, int col);
+int		delete_stars_on_col(t_sudo *sudo, int grid, int lin, int col);
+int		delete_stars(t_sudo *sudo, int grid, int lin, int col);
 
 //PRINT
 void	ft_putchar_color(char c);

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 14:38:57 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/04 16:04:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 {
-//	printf("grid %d | lin = %d | col = %d\n", nb, lin, col);
+
+	printf("grid %d | lin = %d | col = %d\n", nb, lin, col);
 	sudo->sol[0][lin][col] = nb + '0';
 	sudo->sol[nb][lin][col] = nb + '0';
 	sudo->sld++;
-	add_star(sudo, nb);
+	delete_stars(sudo, nb, lin, col);
 	return (0);
 }
 
@@ -28,15 +29,15 @@ int		brain(t_sudo *sudo)
 	int		grid;
 
 	write_ghosts(sudo);  //met les numeros dans les ghosts
+	add_stars(sudo);  // met les etoiles dansns les ghosts
 	b = -1;
 	while (sudo->sld > b)
 	{
-		//b = sudo->sld;
+		b = sudo->sld;
 		grid = 0;
-		add_stars(sudo);  // met les etoiles dansns les ghosts
-		clr_strs(sudo);
 		slv_sqr_strs(sudo);
 		slv_pos_strs(sudo);
+		clr_strs(sudo);
 		print_grids(sudo);
 		printf("\t\tNOMBRE DE NOMBRE TROUVES : %d\n", sudo->sld);
 	}
