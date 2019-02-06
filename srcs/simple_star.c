@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:23:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 20:14:58 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 13:07:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int
 	int		sml_lin;
 	int		big_col;
 	int		sml_col;
+	int		delete;
 
 	//printf("grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
+	delete = 0;
 	big_lin = -1;
 	while (++big_lin < 3)
 	{
@@ -104,6 +106,7 @@ int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int
 							{
 								//printf("---grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
 								sudo->sol[grid][star][sml_col + (big_col * 3)] = ' ';
+								delete++;
 							}
 						}
 						else
@@ -111,11 +114,32 @@ int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int
 							{
 								sudo->sol[grid][sml_lin + (big_lin * 3)][star] = ' ';
 								//printf("---grid %d lin %d col %d star %d hv %d\n", grid, lin, col, star, hv);
+								delete++;
 							}
 					}
 				}
 			}
 		}
+	}
+	if (delete)
+	{
+		print_grids(sudo);
+		write(1, "\033[u", 3);
+		ft_putstr("\t\t\t\t\t\t\t\t\t\t\t");
+		write(1, _RED, 5);
+		ft_putstr("StarDel\t");
+		write(1, _RESET, 5);
+		if (hv == 1)
+		{
+			ft_putchar_color((char)(grid + '0'));
+			printf("\tline: %d\n", lin);
+		}
+		else
+		{
+			ft_putchar_color((char)(grid + '0'));
+			printf("\t\t column: %d\n", lin);
+		}
+		write(1, "\033[s", 3);
 	}
 	return (0);
 }

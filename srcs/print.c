@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 21:20:50 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 13:12:50 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ void wait_pls(void)
 	long long wait;
 
 	wait = 100000000;
-	//wait /= 3;
+	wait /= 3;
 	while(--wait);
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	//printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 void print_grids(t_sudo *sudo)
@@ -125,7 +125,7 @@ void print_grids(t_sudo *sudo)
 	int grid;
 	int tri;
 
-	//printf("\033[0;0H");
+	write(1, "\033[0;0H", 6); //top left corner pointer
 	//wait_pls();
 	//printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\t");
@@ -137,5 +137,5 @@ void print_grids(t_sudo *sudo)
 		tri += 3;
 	}
 	print_grid(sudo, 0);
-	printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n\n\n\n\n" _RESET, sudo->sld, 81 - sudo->bas);
+	printf("\n\t\t\t      NOMBRE DE NOMBRE TROUVES : " _GREEN "%d"_RESET" / " _RED "%d\n" _RESET, sudo->sld, 81 - sudo->bas);
 }

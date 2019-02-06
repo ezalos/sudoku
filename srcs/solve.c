@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 21:30:56 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 13:21:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 {
+	char pause;
+
 	if (check_n(sudo, nb, 0, lin, col))
 	{
 		//printf("grid %d | lin = %d | col = %d\n", nb, lin, col);
@@ -21,10 +23,27 @@ int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 		sudo->sol[nb][lin][col] = nb + '0';
 		sudo->sld++;
 		delete_stars(sudo, nb, lin, col);
+		if (sudo->sld != 1)
+			write(1, "\033[u", 3);
+		else
+			write(1, "\033[0;0H", 6); //top left corner pointer
+		ft_putstr("\t\t\t\t\t\t\t\t\t\t\t");
+		write(1, _GREEN, 5);
+		ft_putstr("New\t");
+		write(1, _RESET, 5);
+		ft_putchar_color((char)(nb + '0'));
+		printf("\tline: %d\t column: %d\n", lin, col);
+		write(1, "\033[s", 3);
+		//scanf("%c", &pause);
 		print_grids(sudo);
 	}
 	return (0);
 }
+
+/*
+**	Note:	With less than 17 squares filled in or less than 8 different digits
+**			it is known that there will be duplicate solutions.
+*/
 
 int		brain(t_sudo *sudo)
 {
@@ -41,24 +60,27 @@ int		brain(t_sudo *sudo)
 	{
 		b = sudo->sld;
 		grid = 0;
-		slv_sqr_strs(sudo);
-		slv_pos_strs(sudo);
+		slv_sqr_strs(sudo); //lonely star in her square is solved
+		slv_pos_strs(sudo); //only star in her position by comparing with all other layers
 		//if (a <= 3)
 		//	add_stars(sudo);
 		if (sudo->sld > b)
 			a = 2;
 		else
 		{
-			clr_strs(sudo);
-			print_grids(sudo);
+			clr_strs(sudo); //get rid of stars that are aligned
 			a--;
 		}
 		if (sudo->sld + sudo->bas == 81)
 		{
-			printf(_GREEN "VICOTRY\n");
+			print_grids(sudo);
+			write(1, "\033[75;0H", 7);
+			printf(_GREEN "VICTORY\n");
 			return (1);
 		}
 	}
+	print_grids(sudo);
+	write(1, "\033[75;0H", 7);
 	printf(_RED "FAILURE\n");
 	//clr_strs(sudo);
 	//print_grids(sudo);
