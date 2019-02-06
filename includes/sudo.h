@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/04 19:54:48 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 19:53:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@
 # include <stdio.h>
 # include "../../libft/libft.h"
 
-# define COLOR
+# define OPTION
+# ifdef OPTION
+#  define ONPTION   1
+# endif
 
+# ifndef OPTION
+#  define ONPTION   0
+# endif
+
+# define COLOR
 # ifndef COLOR
 #  define _RED     ""
 #  define _GREEN   ""

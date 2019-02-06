@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 18:04:11 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/06 18:46:26 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -171,9 +171,44 @@ t1 : 	all
 t2 :	all
 		./$(NAME) ./tests/t2
 a1 :	all
-		./$(NAME) ./tests/tests/s01a.txt
+		./$(NAME) ./tests/tests/good/s01a
 e1 :	all
-		./$(NAME) ./tests/tests/s06a.txt
+		./$(NAME) ./tests/tests/good/s06a
+
+good :	all
+		./$(NAME) ./tests/t0
+		./$(NAME) ./tests/t2
+		./$(NAME) ./tests/tests/good/s01a
+		./$(NAME) ./tests/tests/good/s01b
+		./$(NAME) ./tests/tests/good/s01c
+		./$(NAME) ./tests/tests/good/s02a
+		./$(NAME) ./tests/tests/good/s02b
+		./$(NAME) ./tests/tests/good/s02c
+		./$(NAME) ./tests/tests/good/s03a
+		./$(NAME) ./tests/tests/good/s03b
+		./$(NAME) ./tests/tests/good/s04a
+		./$(NAME) ./tests/tests/good/s04c
+		./$(NAME) ./tests/tests/good/s06a
+		./$(NAME) ./tests/tests/good/s06b
+		./$(NAME) ./tests/tests/good/s06c
+		./$(NAME) ./tests/tests/good/s07a
+		./$(NAME) ./tests/tests/good/s07b
+		./$(NAME) ./tests/tests/good/s07c
+		./$(NAME) ./tests/tests/good/s08a
+		./$(NAME) ./tests/tests/good/s08b
+		./$(NAME) ./tests/tests/good/s09a
+		./$(NAME) ./tests/tests/good/s09c
+		./$(NAME) ./tests/tests/good/s10a
+		./$(NAME) ./tests/tests/good/s10b
+		./$(NAME) ./tests/tests/good/s10c
+		./$(NAME) ./tests/tests/good/s11b
+		./$(NAME) ./tests/tests/good/s11c
+		./$(NAME) ./tests/tests/good/s13a
+		./$(NAME) ./tests/tests/good/s13b
+		./$(NAME) ./tests/tests/good/s13c
+		./$(NAME) ./tests/tests/good/s14a
+		./$(NAME) ./tests/tests/good/s14b
+		./$(NAME) ./tests/tests/good/s14c
 
 ##########################
 ##						##
@@ -181,4 +216,4 @@ e1 :	all
 ##						##
 ##########################
 
-.PHONY : clean fclean re all d git check show_ grep_ hide_ malloc_check onption offption push order testa testv teste testp
+.PHONY : clean fclean re all git aclean afclean are

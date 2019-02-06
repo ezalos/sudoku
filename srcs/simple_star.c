@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:23:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/06 13:07:27 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 18:39:49 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int 	delete_aligned_stars(t_sudo *sudo, int grid, int hv, int star, int lin, int
 			}
 		}
 	}
-	if (delete)
+	if (delete && ONPTION)
 	{
 		print_grids(sudo);
 		write(1, "\033[u", 3);

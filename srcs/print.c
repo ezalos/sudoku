@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/06 13:25:11 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/06 17:06:06 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void print_grids(t_sudo *sudo)
 	int tri;
 
 	write(1, "\033[0;0H", 6); //top left corner pointer
-	wait_pls();
+	//wait_pls();
 	//printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\t");
 	tri = 0;
