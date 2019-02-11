@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:25 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/06 17:06:06 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/07 18:00:49 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void print_grid(t_sudo *sudo, int grid)
 		}
 	}
 }
+
 void wait_pls(void)
 {
 	long long wait;

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/06 19:53:27 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/02/07 13:51:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		delete_stars(t_sudo *sudo, int grid, int lin, int col);
 void	ft_putchar_color(char c);
 void 	print_grid(t_sudo *sudo, int grid);
 void 	print_grids(t_sudo *sudo);
+void	wait_pls(void);
 
 
 #endif
