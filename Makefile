@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/06 18:46:26 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/18 17:16:39 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -163,6 +163,9 @@ git :
 		@git status
 		git commit -am "$(MSG)"
 		@git push
+
+t  :	all
+		bash launch_10k.sh
 
 t0 :	all
 		./$(NAME) ./tests/t0
