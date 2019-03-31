@@ -17,13 +17,13 @@ done
 if [[ $value = 1 ]]; then
 	while [[ $i -le "$nb" ]]; do
 		name=$[ ( RANDOM % 10000) + 1]
-		echo './sudoku tests/magictour/10k/"$name"'
+		echo "./sudoku tests/magictour/10k/$name"
 		./sudoku tests/magictour/10k/"$name"
 		i=$[$i + 1]
 	done
 else
 	while [[ $name -le "$nb" ]]; do
-		echo './sudoku tests/magictour/10k/'$name''
+		echo "./sudoku tests/magictour/10k/$name"
 		./sudoku tests/magictour/10k/"$name"
 		name=$[$name + 1]
 	done

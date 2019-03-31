@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:24:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/18 18:26:09 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/03/30 16:23:51 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SUDO_H
 
 # include <stdio.h>
-# include "../../libft/libft.h"
+# include "../../libft/includes/libft.h"
 
-# define OPTION
+// # define OPTION
 # ifdef OPTION
 #  define ONPTION   1
 # endif
