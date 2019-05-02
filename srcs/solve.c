@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 01:28:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/07 18:00:42 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:11:03 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		new_nb(t_sudo *sudo, int nb, int lin, int col)
 			ft_putchar_color((char)(nb + '0'));
 			printf("\tline: %d\t column: %d\n", lin, col);
 			write(1, "\033[s", 3);
-			//scanf("%c", &pause);
+			// scanf("%c", &pause);
 			print_grids(sudo);
 		}
 	}
